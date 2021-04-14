@@ -1,0 +1,70 @@
+$(document).ready(function(){	
+	$('#calculate_roas').click( function(){
+		var currency_symbols = { 'EUR': "€", 'USD': "$", 'GBP': "£", 'AED': "د.إ" },
+			$that 					= $(this),
+			ad_spend 				= $('#ad_spend').attr('data-val'),
+			revenue 				= $('#revenue').attr('data-val'),
+			currency 				= $('#currency').val(),
+			
+			data 					= { 
+				'ad_spend' 			: ad_spend, 
+				'revenue' 			: revenue, 				
+				'currency'			: currency,
+				'currency_symbol'	: currency_symbols[currency],
+				
+			};
+			
+		calculated_data = ROAS.Calculator( data );
+		ROAS.setData( calculated_data );			
+		return false;
+	});
+	
+	$('.currency_field').on( "focus", function(){
+		val = $(this).attr('data-val');
+		$(this).val( val );
+	});
+	$('.currency_field').on( "keyup", function(){
+		val = $(this).val();
+		$(this).attr('data-val', val);		
+	});
+	$(document).on( "blur load", '.currency_field', function(){
+		val 			= $(this).attr('data-val');
+		currency 		= $('#currency').val()
+		formated_val 	= ROAS.formatCurrencyField( val, currency );
+		$(this).val(formated_val);		
+	});
+	
+});
+
+var ROAS = {
+	Calculator: function( data ){
+		data.profit 		= ( data.revenue - data.ad_spend ),
+		data.roas 			= ( data.revenue / data.ad_spend ) * 100,
+		data.revenue_800 	= data.ad_spend * 8;			
+		return data;
+	},
+	setData: function( data ){
+		$('#profit').html( ROAS.formatCurrencyField( data.profit, data.currency ) );
+		$('#roas').html( Math.ceil( data.roas )+'%' );
+		$('#min_revenue').html(ROAS.formatCurrencyField( data.revenue_800, data.currency ) );
+		$('.currency_symbol').html( data.currency_symbol );
+	},
+	
+	format_number: function( data, points ){
+		return data.toFixed(points).replace(/(\d)(?=(\d{3})+\.)/g, "$1,");
+	},
+		
+	formatCurrencyField: function( val, currency ){		
+		 var formated_val = new Intl.NumberFormat( 'de-DE' , {
+			style: "currency",
+			currency: currency
+		}).format(val);
+		return formated_val;
+	},
+	
+	formatNumberField: function( val ){		
+		 var formated_val = new Intl.NumberFormat( 'de-DE' , {
+		}).format(val);
+		return formated_val;
+	}
+}

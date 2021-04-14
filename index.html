@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!-- saved from url=(0059)http://buildmycode.com/i/marketing-mba/roas-calculator.html -->
+<html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ROAS calculator</title>
+<link rel="stylesheet" href="./ROAS calculator_files/font-awesome.min.css" type="text/css">
+<link rel="stylesheet" href="./ROAS calculator_files/style.css" type="text/css">
+<link rel="stylesheet" href="./ROAS calculator_files/responsive.css" type="text/css">
+<script src="./ROAS calculator_files/jquery.min.js.download"></script>
+<script src="./ROAS calculator_files/roas-calculator.js.download"></script>
+</head>
+<body data-new-gr-c-s-check-loaded="14.1006.0" data-gr-ext-installed="" style="">
+<div class="page">
+	<div class="container">
+		<div class="calculator_wrap">
+			<h1>ROAS Calculator</h1>
+			<div class="currency_wrap">
+				<div class="calc_field">
+					<label class="calc_label">Currency</label>
+					<div class="calc_field_wrap medium_3">
+						<select class="calc_input" id="currency">
+							<option value="EUR" selected="selected">EUR</option>
+							<option value="USD">USD</option>
+							<option value="GBP">GBP</option>
+							<option value="AED">AED</option>
+						</select>
+					</div>
+				</div>
+				
+			</div>
+			<div class="calc_details_wrap">
+				<div class="calc_form">
+					<h2>Assumptions</h2>
+					<div class="calc_field">
+						<label class="calc_label">Ad Spend (<span class="calc_currency currency_symbol">€</span>)</label>
+						<div class="calc_field_wrap">
+							<input class="calc_input currency_field" type="text" value="15.000,00 €" placeholder="Ad Spend" id="ad_spend" data-val="15000">
+						</div>
+					</div>
+					<div class="calc_field ">
+						<label class="calc_label">Revenue from Ad Spend (<span class="calc_currency currency_symbol">€</span>)</label>
+						<div class="calc_field_wrap">
+							<input class="calc_input currency_field" type="text" value="72.000,00 €" placeholder="Revenue from Ad Spend" id="revenue" data-val="72000">
+						</div>
+					</div>
+					<div class="calc_field submit_wrap">
+						<button type="submit" class="calc_form_submit" id="calculate_roas">Calculate</button>
+					</div>
+				</div>
+				<div class="calc_form result">
+					<h2>Results</h2>
+					<div class="calc_field">
+						<div class="calc_field">
+							<label class="calc_label">Profit (<span class="calc_currency currency_symbol">€</span>)</label>
+						</div>
+						<div class="calc_result_value"><span class="gain_or_loss" id="profit">0</span> </div>
+					</div>
+					<div class="calc_field background">
+						<label class="calc_label">Return on Ad Spend (ROAS) <span class="calc_unit">(%)</span></label>
+						<div class="calc_result_value"> <span class="" id="roas">0 %</span> </div>
+					</div>
+
+					<div class="calc_field">
+						<label class="calc_label">Minimum Revenue to reach 800% ROAS(<span class="calc_currency currency_symbol">€</span>)</label>
+						<div class="calc_result_value"> <span class="time_needed" id="min_revenue">0</span> </div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+
+</body></html>
